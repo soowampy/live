@@ -24,7 +24,7 @@ public class Email {
     }
 
     private void validate(String email) {
-        if (!email.matches(EMAIL_PATTERN)) {
+        if (email == null || email.isBlank() || !email.matches(EMAIL_PATTERN)) {
             throw new InvalidEmailException(EMAIL_INVALID.getMessage());
         }
     }

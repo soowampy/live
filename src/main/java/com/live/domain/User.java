@@ -11,6 +11,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Table(
+        name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "ux_users_email", columnNames = "email")
+        }
+)
 public class User {
 
     @Id
@@ -18,10 +24,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
+    @Embedded
     private Email email;
 
-    @Enumerated(EnumType.STRING)
+    @Embedded
     private Name name;
 
     @CreatedDate
@@ -30,6 +36,13 @@ public class User {
 
     public User(Email email, Name name) {
         this(null, email, name, null);
+    }
+
+    @PrePersist
+    void prePersist() {
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
+        }
     }
 }
 
