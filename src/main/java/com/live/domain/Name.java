@@ -25,7 +25,7 @@ public class Name {
     }
 
     private void validate(String name) {
-        if (!name.matches(NAME_PATTERN)) {
+        if (name == null || name.isBlank() || !name.matches(NAME_PATTERN)) {
             throw new InvalidNameException(BusinessErrorMessage.NAME_INVALID.getMessage());
         }
     }
