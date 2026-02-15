@@ -1,9 +1,27 @@
 package com.live.service;
 
-import lombok.AllArgsConstructor;
+import com.live.common.exception.UserNotFoundException;
+import com.live.domain.User;
+import com.live.domain.UserRepository;
+import com.live.service.dto.UserDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import static com.live.common.exception.BusinessErrorMessage.USER_NOT_FOUND;
+
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserQueryService {
+    private final UserRepository userRepository;
+
+    public UserDto getUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND.getMessage()));
+        return new UserDto(
+                user.getId(),
+                user.getEmail().getValue(),
+                user.getName().getValue(),
+                user.getCreatedAt()
+        );
+    }
 }

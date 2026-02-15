@@ -14,13 +14,13 @@ public class Email {
             "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
     @Column(name = "email", nullable = false)
-    private final String email;
+    private final String value;
 
-    protected Email() {this.email = null;}
+    protected Email() {this.value = null;}
 
-    public Email(String email) {
-        validate(email);
-        this.email = email;
+    public Email(String value) {
+        validate(value);
+        this.value = value;
     }
 
     private void validate(String email) {

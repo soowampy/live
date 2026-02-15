@@ -15,13 +15,13 @@ public class Name {
     private static final String NAME_PATTERN = "^[가-힣a-zA-Z]{2,10}$";
 
     @Column(name = "name", nullable = false)
-    private final String name;
+    private final String value;
 
-    protected Name() {this.name = null;}
+    protected Name() {this.value = null;}
 
-    public Name(String name) {
-        validate(name);
-        this.name = name;
+    public Name(String value) {
+        validate(value);
+        this.value = value;
     }
 
     private void validate(String name) {

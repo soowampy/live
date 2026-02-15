@@ -1,14 +1,10 @@
 package com.live.service;
 
 import com.live.common.exception.DuplicateEmailException;
-import com.live.controller.dto.UserCreateRequest;
-import com.live.controller.dto.UserCreateResponse;
 import com.live.domain.User;
 import com.live.domain.UserRepository;
 import com.live.service.dto.UserCreateDto;
 import com.live.service.dto.UserCreatedDto;
-import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -29,8 +25,8 @@ public class UserCommandService {
             User saved = userRepository.save(user);
             return new UserCreatedDto(
                     saved.getId(),
-                    saved.getEmail().getEmail(),
-                    saved.getName().getName(),
+                    saved.getEmail().getValue(),
+                    saved.getName().getValue(),
                     saved.getCreatedAt());
         } catch (DataIntegrityViolationException e) {
             // 동시성 방지

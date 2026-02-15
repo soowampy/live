@@ -34,4 +34,10 @@ public class GlobalExceptionHandler {
         log.error("ValidationError: {}", msg);
         return ErrorResponse.of(HttpStatus.BAD_REQUEST.value(), "BAD_REQUEST", msg).toResponseEntity();
     }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handle(UserNotFoundException e) {
+        log.error("UserNotFound", e);
+        return ErrorResponse.of(HttpStatus.NOT_FOUND.value(), "NOT_FOUND", e.getMessage()).toResponseEntity();
+    }
 }
