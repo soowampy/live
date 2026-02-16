@@ -40,4 +40,22 @@ public class GlobalExceptionHandler {
         log.error("UserNotFound", e);
         return ErrorResponse.of(HttpStatus.NOT_FOUND.value(), "NOT_FOUND", e.getMessage()).toResponseEntity();
     }
+
+    @ExceptionHandler(CouponNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handle(CouponNotFoundException e) {
+        log.error("CouponNotFound", e);
+        return ErrorResponse.of(HttpStatus.NOT_FOUND.value(), "NOT_FOUND", e.getMessage()).toResponseEntity();
+    }
+
+    @ExceptionHandler(CouponDuplicatedException.class)
+    public ResponseEntity<ErrorResponse> handle(CouponDuplicatedException e) {
+        log.error("CouponDuplicate", e);
+        return ErrorResponse.of(HttpStatus.CONFLICT.value(), "CONFLICT", e.getMessage()).toResponseEntity();
+    }
+
+    @ExceptionHandler(CouponExpireException.class)
+    public ResponseEntity<ErrorResponse> handle(CouponExpireException e) {
+        log.error("CouponExpire", e);
+        return ErrorResponse.of(HttpStatus.BAD_REQUEST.value(), "BAD_REQUEST", e.getMessage()).toResponseEntity();
+    }
 }

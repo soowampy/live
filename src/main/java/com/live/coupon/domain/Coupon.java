@@ -1,4 +1,4 @@
-package com.live.user.domain;
+package com.live.coupon.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,37 +6,34 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
+@Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(
-        name = "users",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "ux_users_email", columnNames = "email")
-        }
-)
-public class User {
-
+@Table(name = "coupon")
+public class Coupon {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "coupon_id")
     private Long id;
 
     @Embedded
-    private Email email;
+    private CouponCode couponCode;
 
-    @Embedded
-    private Name name;
-
-    @CreatedDate
     @Column(name ="created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public User(Email email, Name name) {
-        this(null, email, name, null);
+    @Column(name = "valid_at", nullable = false)
+    private LocalDateTime validAt;
+
+    public boolean isExpired() {
+        return validAt.isBefore(LocalDateTime.now());
+    }
+
+    public Coupon(CouponCode couponCode, LocalDateTime validAt) {
+        this(null, couponCode, null, validAt);
     }
 
     @PrePersist
@@ -46,4 +43,3 @@ public class User {
         }
     }
 }
-

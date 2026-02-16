@@ -14,14 +14,18 @@ import static com.live.common.exception.BusinessErrorMessage.USER_NOT_FOUND;
 public class UserQueryService {
     private final UserRepository userRepository;
 
-    public UserDto getUser(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND.getMessage()));
+    public UserDto getUserDto(Long id) {
+        User user = getUser(id);
         return new UserDto(
                 user.getId(),
                 user.getEmail().getValue(),
                 user.getName().getValue(),
                 user.getCreatedAt()
         );
+    }
+
+    public User getUser(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND.getMessage()));
     }
 }
