@@ -1,4 +1,4 @@
-package com.live.controller.dto;
+package com.live.user.controller.dto;
 
 import java.time.LocalDateTime;
 

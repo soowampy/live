@@ -1,13 +1,12 @@
-package com.live.controller;
+package com.live.user.controller;
 
-import com.live.controller.dto.UserCreateRequest;
-import com.live.controller.dto.UserCreateResponse;
-import com.live.controller.dto.UserResponse;
-import com.live.domain.User;
-import com.live.service.UserCommandService;
-import com.live.service.UserQueryService;
-import com.live.service.dto.UserCreatedDto;
-import com.live.service.dto.UserDto;
+import com.live.user.controller.dto.UserCreateRequest;
+import com.live.user.controller.dto.UserCreateResponse;
+import com.live.user.controller.dto.UserResponse;
+import com.live.user.service.UserCommandService;
+import com.live.user.service.UserQueryService;
+import com.live.user.service.dto.UserCreatedDto;
+import com.live.user.service.dto.UserDto;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

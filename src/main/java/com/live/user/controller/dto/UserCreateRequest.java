@@ -1,8 +1,8 @@
-package com.live.controller.dto;
+package com.live.user.controller.dto;
 
-import com.live.domain.Email;
-import com.live.domain.Name;
-import com.live.service.dto.UserCreateDto;
+import com.live.user.domain.Email;
+import com.live.user.domain.Name;
+import com.live.user.service.dto.UserCreateDto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 

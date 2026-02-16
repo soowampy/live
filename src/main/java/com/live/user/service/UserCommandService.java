@@ -1,10 +1,10 @@
-package com.live.service;
+package com.live.user.service;
 
 import com.live.common.exception.DuplicateEmailException;
-import com.live.domain.User;
-import com.live.domain.UserRepository;
-import com.live.service.dto.UserCreateDto;
-import com.live.service.dto.UserCreatedDto;
+import com.live.user.domain.User;
+import com.live.user.domain.UserRepository;
+import com.live.user.service.dto.UserCreateDto;
+import com.live.user.service.dto.UserCreatedDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

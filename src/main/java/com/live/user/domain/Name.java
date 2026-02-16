@@ -1,4 +1,4 @@
-package com.live.domain;
+package com.live.user.domain;
 
 
 import com.live.common.exception.BusinessErrorMessage;

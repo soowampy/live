@@ -1,9 +1,9 @@
-package com.live.service;
+package com.live.user.service;
 
 import com.live.common.exception.UserNotFoundException;
-import com.live.domain.User;
-import com.live.domain.UserRepository;
-import com.live.service.dto.UserDto;
+import com.live.user.domain.User;
+import com.live.user.domain.UserRepository;
+import com.live.user.service.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

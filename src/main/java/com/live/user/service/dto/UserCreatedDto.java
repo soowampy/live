@@ -1,4 +1,4 @@
-package com.live.service.dto;
+package com.live.user.service.dto;
 
 import java.time.LocalDateTime;
 
