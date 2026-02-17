@@ -10,7 +10,9 @@ public enum BusinessErrorMessage {
     USER_NOT_FOUND("해당하는 유저가 존재하지 않습니다"),
     COUPON_NOT_FOUND("해당하는 쿠폰이 존재하지 않습니다"),
     COUPON_EXPIRE("해당 쿠폰은 만료되었습니다"),
-    COUPON_DUPLICATED("해당 쿠폰은 이미 등록되어있습니다");
+    COUPON_DUPLICATED("해당 쿠폰은 이미 등록되어있습니다"),
+    PRODUCT_NOT_FOUND("상품이 존재하지 않습니다"),
+    OUT_OF_STOCK("재고 부족");
     private final String message;
 
     BusinessErrorMessage(String message) {
